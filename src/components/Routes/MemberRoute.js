@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 import { Route, Redirect, withRouter } from "react-router-dom";
 
-const MemberRoute = ({ component: Component, location, ...rest }) => {
+const MemberRoute = ({ component: Component, match,path,location, ...rest }) => {
   const ok = localStorage.getItem("BWAMICRO:token");
 
-  const params = location?.search.substring(1).split("&");
-  const path = params.find((item) => item.indexOf("path") > -1);
-  const redirect = path?.split("=")?.[1];
 
-  if (!ok && redirect) localStorage.setItem("BWAMICRO:redirect", redirect);
 
-  return <Route {...rest} 
-                render={props=> ok ? <Redirect to={'/'}/>: <Component {...props}/> }
-
-  />;
+  localStorage.removeItem("BWAMICRO:redirect")
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        ok ? (<Component{...props}/>): path === "/joined/:class" ? 
+        <Redirect to={`/login?path=${location.pathname}`}/> : 
+        <Redirect to={`/private?path=${location.pathname}`} />
+      }
+    />
+  );
 };
-export default withRouter(GuestRoute)
+export default withRouter(MemberRoute);
