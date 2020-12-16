@@ -1,15 +1,12 @@
 import React  from 'react';
-import {createBrowserHistory}  from 'history'
-
-import {  Router ,Route ,Switch } from 'react-router-dom'
-
+import { createBrowserHistory } from "history";
+import { Router, Route, Switch } from "react-router-dom";
 import './assets/css/style.css';
-
-
-import MemberRoute from 'components/Routes/MemberRoute'
+//import MemberRoute from 'components/Routes/MemberRoute'
 import GuestRoute from 'components/Routes/GuestRoute'
-import NotFound from 'pages/NotFound'
-import Login from 'pages/login'
+import Login from 'pages/Login'
+import NotFound from 'pages/404'
+
 
 
 function App() {
@@ -19,9 +16,7 @@ function App() {
     <>
       <Router history={history}>
         <Switch>
-          <GuestRoute path="/login" component={Login}>
-
-          </GuestRoute>
+          <GuestRoute path="/login" component={Login}></GuestRoute>
           <Route path="*" component={NotFound}></Route>
         </Switch>
       </Router>

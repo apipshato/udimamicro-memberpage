@@ -4,6 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.on-light circle, .on-dark circle{
+  @apply .fill-orange-500;
+}
+
+.on-light path{
+  @apply .fill-gray-900
+}
+.on-dark path{
+  @apply .fill-white
+}
 
 .modal-close{
   @apply .absolute .right-0 .cursor-pointer .inline-block;
@@ -89,7 +99,7 @@
   height: 0;
 }
 .video-wrapper iframe{
-  @apply absolute .top-0 .left-0 .w-full .h-full
+  @apply .absolute .top-0 .left-0 .w-full .h-full
 }
 .meta-price {
   @apply .fixed .bottom-0;
@@ -187,7 +197,7 @@
   }
   
   .item figure.item-image svg.icon circle {
-    @apply .fill-orange-500;
+    @apply fill-orange-500;
   }
   
   .item:hover figure.item-image svg.icon {

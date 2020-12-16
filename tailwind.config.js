@@ -1,4 +1,4 @@
-const colors = require("./tailwindcss/colors.js");
+const colors = require("./tailwindcss/colors");
 
 module.exports = {
   purge: [],
