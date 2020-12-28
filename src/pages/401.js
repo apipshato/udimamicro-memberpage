@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Unaunthenticated() {
+export default function Unauthenticated() {
     return (
         <div>
             woi
