@@ -1,10 +1,16 @@
 import React, {useState} from 'react'
+import {useDispatch} from 'react-redux'
 import users from 'constants/api/users'
 import {withRouter} from 'react-router-dom'
 import {setAuthorizationHeader} from 'configs/axios'
 
+import { populateProfile } from 'store/actions/users'
+
+
 
  function LoginForm({history}) {
+
+  const dispatch =useDispatch()
 
 const [email, setemail] = useState(()=>(""))
 
@@ -18,7 +24,7 @@ function submit(e) {
       .then((res) => {
         setAuthorizationHeader(res.data.token);
         users.details().then((detail) => {
-          
+          dispatch(populateProfile(detail.data))
           const production =
             process.env.REACT_APP_FRONTPAGE_URL ===
             "https://micro.buildwithangga.id"
